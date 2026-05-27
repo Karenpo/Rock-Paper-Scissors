@@ -1,6 +1,8 @@
 /* console.log("Hello World")
 для проверки, что все работает */ 
 
+playGame();
+
 function getComputerChoice() {
   const randomNumber = Math.random();
   
@@ -13,17 +15,56 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
-
 function getHumanChoice() {
   let choice = prompt("Choose Rock, Scissors or Paper");
   return choice.toLowerCase(); //изначально написал просто choice, но надо привести к единому регистру, т.к. пользователь может написать и с большой буквы
 }
 
-console.log(getHumanChoice());
+function playGame() {
+  let humanScore = 0; 
+  let computerScore = 0;
 
-let humanScore = 0; 
-let getComputerScore = 0;
+  function playRound(humanChoice, computerChoice) {
+    const human = humanChoice.toLowerCase(); 
+    const computer = computerChoice.toLowerCase();
+    if (human === computer) {
+      console.log("Draw!" + human + " = " + computer);
+    } else if (
+      ( human === "rock" && computer === "scissors") ||
+      ( human === "paper" && computer === "rock") ||
+      ( human === "scissors" && computer === "paper") 
+    ) {
+      console.log("You win!" + human + " beats " + computer);
+      humanScore ++;
+    } else {
+      console.log("You`ve lost!" + computer + " beats " + human);
+      computerScore ++;
+    }
+  }
+    for (let i = 1; i <= 5; i++) {
+      console.log(`Round ${i}`);
+      const humanSelection = getHumanChoice();
+      const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+    console.log(`Current Score -> Human: ${humanScore}, Computer: ${computerScore}`);
+  }
+    console.log("Game Over");
+    if (humanScore > computerScore) {
+      console.log(`Congratulations! You have won the game! Final score is ${humanScore}:${computerScore}`); 
+    } else if (humanScore < computerScore) {
+      console.log(`You have lost. Final score is ${humanScore}:${computerScore}`);
+    } else {
+      console.log(`Draw. Final score is ${humanScore}:${computerScore}`);
+    }
+}
+
+/*function ShowMessage() {
+  return ("Hello");
+}
+
+console.log(ShowMessage());
+*/
 
 /* вариант этого кода с массивом. 
 function getComputerChoice() {
