@@ -1,6 +1,73 @@
 /* console.log("Hello World")
 для проверки, что все работает */ 
 
+function getComputerChoice() {
+  const computerChoice = Math.random();
+
+  if (computerChoice < 1 / 3) {
+      return "rock"; 
+  } else if (computerChoice < 2 / 3) {
+      return "paper";
+  } else {
+      return "scissors";
+  }
+}
+
+function getHumanChoice() {
+  const humanChoice = prompt("Choose between Rock, Paper or Scissors");
+  return humanChoice.toLowerCase();
+}
+
+function playRound(humanChoice, computerChoice) {
+  
+  if (computerChoice === humanChoice) {
+      console.log(`Draw! ${computerChoice} = ${humanChoice}`);
+      return "draw";
+  } else if (
+  ( humanChoice === "rock" && computerChoice === "scissors") ||
+  ( humanChoice === "scissors" && computerChoice === "paper") ||
+  ( humanChoice === "paper" && computerChoice === "rock")
+   ) {
+      console.log(`You've won ${humanChoice} beats ${computerChoice}`);
+      return "human"; 
+  } else { 
+      console.log(`You've lost ${computerChoice} beats ${humanChoice}`);
+      return "computer";
+  }
+}
+
+function counter() {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  for (let i = 0; i < 5; i++) {
+      console.log(`Round ${i + 1}`);
+
+      const roundResult = playRound(getHumanChoice(), getComputerChoice());
+
+      if (roundResult === "human") {
+          humanScore++;
+      } else if (roundResult === "computer") { 
+          computerScore++;
+      }
+
+      console.log(`Current score: human: ${humanScore}, computer: ${computerScore}`);
+  }
+
+  console.log(`Game over.`);
+
+  if (humanScore > computerScore) {
+      console.log(`Congratulations. You've won.`); 
+  } else if (humanScore < computerScore) {
+      console.log(`You've lost.`);
+  } else {
+      console.log(`Draw.`);
+  }
+}
+
+/* ниже будет код, который я написал в начале, самый первый, для сравнения, 
+он гораздо менее профессиональный. 
+
 playGame();
 
 function getComputerChoice() {
@@ -58,6 +125,7 @@ function playGame() {
       console.log(`Draw. Final score is ${humanScore}:${computerScore}`);
     }
 }
+*/
 
 /*function ShowMessage() {
   return ("Hello");
@@ -89,3 +157,4 @@ function sum(param1, param2) {
 
 console.log (sum(1, 2));
 */
+
