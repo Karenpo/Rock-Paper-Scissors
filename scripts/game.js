@@ -1,15 +1,15 @@
 /* console.log("Hello World")
-для проверки, что все работает */ 
+для проверки, что все работает */
 
 function getComputerChoice() {
   const computerChoice = Math.random();
 
   if (computerChoice < 1 / 3) {
-      return "rock"; 
+    return "rock";
   } else if (computerChoice < 2 / 3) {
-      return "paper";
+    return "paper";
   } else {
-      return "scissors";
+    return "scissors";
   }
 }
 
@@ -19,20 +19,20 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-  
+
   if (computerChoice === humanChoice) {
-      console.log(`Draw! ${computerChoice} = ${humanChoice}`);
-      return "draw";
+    console.log(`Draw! ${computerChoice} = ${humanChoice}`);
+    return "draw";
   } else if (
-  ( humanChoice === "rock" && computerChoice === "scissors") ||
-  ( humanChoice === "scissors" && computerChoice === "paper") ||
-  ( humanChoice === "paper" && computerChoice === "rock")
-   ) {
-      console.log(`You've won ${humanChoice} beats ${computerChoice}`);
-      return "human"; 
-  } else { 
-      console.log(`You've lost ${computerChoice} beats ${humanChoice}`);
-      return "computer";
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "rock")
+  ) {
+    console.log(`You've won ${humanChoice} beats ${computerChoice}`);
+    return "human";
+  } else {
+    console.log(`You've lost ${computerChoice} beats ${humanChoice}`);
+    return "computer";
   }
 }
 
@@ -41,27 +41,27 @@ function counter() {
   let computerScore = 0;
 
   for (let i = 0; i < 5; i++) {
-      console.log(`Round ${i + 1}`);
+    console.log(`Round ${i + 1}`);
 
-      const roundResult = playRound(getHumanChoice(), getComputerChoice());
+    const roundResult = playRound(getHumanChoice(), getComputerChoice());
 
-      if (roundResult === "human") {
-          humanScore++;
-      } else if (roundResult === "computer") { 
-          computerScore++;
-      }
+    if (roundResult === "human") {
+      humanScore++;
+    } else if (roundResult === "computer") {
+      computerScore++;
+    }
 
-      console.log(`Current score: human: ${humanScore}, computer: ${computerScore}`);
+    console.log(`Current score: human: ${humanScore}, computer: ${computerScore}`);
   }
 
   console.log(`Game over.`);
 
   if (humanScore > computerScore) {
-      console.log(`Congratulations. You've won.`); 
+    console.log(`Congratulations. You've won.`);
   } else if (humanScore < computerScore) {
-      console.log(`You've lost.`);
+    console.log(`You've lost.`);
   } else {
-      console.log(`Draw.`);
+    console.log(`Draw.`);
   }
 }
 
@@ -144,7 +144,7 @@ function getComputerChoice() {
 console.log(getComputerChoice());
 */
 
- 
+
 /*function favoriteAnimal(animal) {
   return animal + " is my favorite animal"
 }
